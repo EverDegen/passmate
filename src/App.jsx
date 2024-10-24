@@ -86,8 +86,8 @@ function App() {
 
   return (
     <div className="wrapper">
-      <h1 className="title">random password generator</h1>
       <div className="header">
+        <h1 className="title">random password generator</h1>
         <input
           type="text"
           value={password}
