@@ -1,0 +1,134 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-transform: capitalize;
+}
+
+input[type="text"],
+input[type="number"] {
+  outline: none;
+  border-radius: 8px;
+  padding: 0.6em 1.2em;
+  border: 1px solid transparent;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  transition: border-color 0.25s;
+}
+
+input[type="number"] {
+  width: 3em;
+}
+
+input[type="checkbox"] {
+  width: 1.4em;
+  height: 1.4em;
+  accent-color: green;
+}
+
+input[type="range"] {
+  width: 100%;
+  height: 5em;
+  cursor: pointer;
+}
+
+button {
+  text-transform: inherit;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+
+.wrapper {
+  min-width: 20em;
+  max-width: 37em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+  margin: 1em auto;
+  padding: 0 1em;
+}
+.wrapper h1 {
+  font-size: clamp(1.4em, 4vw, 2.4em);
+  line-height: 1.1;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.header input {
+  font-size: 1.6em;
+}
+
+.main {
+  width: 100%;
+  font-size: 1.2em;
+}
+
+.length-selector label {
+  margin-right: 1em;
+}
+
+.length-selector input[type="number"] {
+  font-size: 0.8em;
+}
+
+.length-selector input[type="range"] {
+  grid-column: span 3;
+}
+
+.length-selector span {
+  justify-self: end;
+}
+
+.main ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.main li {
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+}
