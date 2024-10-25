@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import CopyIcon from "./assets/copy.svg";
-import RefreshIcon from "./assets/refresh.svg";
 
 function App() {
   const [passwordLength, setPasswordLength] = useState(8);
@@ -12,10 +10,11 @@ function App() {
   const [symbols, setSymbols] = useState(true);
 
   const [regenerate, setRegenerate] = useState(false);
+  const [copyPassword, setCopyPassword] = useState(false);
 
   function handleCopy() {
     navigator.clipboard.writeText(password);
-    alert("Password copied to clipboard!");
+    setCopyPassword(true);
   }
 
   function handleRegenerate() {
@@ -85,99 +84,120 @@ function App() {
   );
 
   return (
-    <div className="wrapper">
-      <div className="header">
-        <h1 className="title">random password generator</h1>
+    <div className="container">
+      <dialog open={copyPassword}>
+        <article>
+          <header>
+            <button
+              onClick={() => setCopyPassword(false)}
+              aria-label="Close"
+              rel="prev"
+            ></button>
+            <p>
+              <strong>✅ Password Copied Successfully </strong>
+            </p>
+          </header>
+          <p>Password has been copied successfully to your clipboard.</p>
+        </article>
+      </dialog>
+      <header>
+        <h1>Random Password Generator</h1>
+      </header>
+      <section role="group">
         <input
           type="text"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <button onClick={handleRegenerate} title="Regenerate">
+          Regenerate
+        </button>
+      </section>
 
-        <button className="icon" onClick={handleCopy} title="Copy">
-          <img src={CopyIcon} alt="copy icon" />
-        </button>
-        <button className="icon" onClick={handleRegenerate} title="Regenerate">
-          <img src={RefreshIcon} alt="refresh icon" />
-        </button>
-      </div>
-      <div className="main">
-        <div className="length-selector">
-          <label htmlFor="input-length">password length</label>
+      <section>
+        <label>
+          Password Length
           <input
             type="number"
-            id="input-length"
+            name="password_length"
             value={passwordLength}
             onChange={(e) => setPasswordLength(Number(e.target.value))}
             onBlur={(e) => {
               const value = Number(e.target.value);
-              if (value < 8) {
-                setPasswordLength(8);
+              if (value < 4) {
+                setPasswordLength(4);
               } else if (value > 24) {
                 setPasswordLength(24);
               }
             }}
           />
+        </label>
+
+        <label>
+          {passwordLength < 8
+            ? "Weak"
+            : passwordLength >= 8 && passwordLength < 16
+            ? "Good"
+            : "Strong"}
           <input
             type="range"
-            style={{
-              accentColor:
-                passwordLength <= 11
-                  ? "red"
-                  : passwordLength >= 12 && passwordLength < 16
-                  ? "yellow"
-                  : "green",
-            }}
-            min={8}
+            min={4}
             max={24}
             title={passwordLength}
             value={passwordLength}
             onChange={(e) => setPasswordLength(Number(e.target.value))}
           />
-        </div>
-        <ul>
-          <li>
-            <input
-              type="checkbox"
-              id="uppercase"
-              checked={uppercase}
-              disabled={!lowercase && !numbers && !symbols}
-              onChange={(e) => setUppercase(e.target.checked)}
-            />
-            <label htmlFor="uppercase">uppercase</label>
-          </li>
-          <li>
-            <input
-              type="checkbox"
-              id="lowercase"
-              checked={lowercase}
-              disabled={!uppercase && !numbers && !symbols}
-              onChange={(e) => setLowercase(e.target.checked)}
-            />
-            <label htmlFor="lowercase">lowercase</label>
-          </li>
-          <li>
-            <input
-              type="checkbox"
-              id="numbers"
-              checked={numbers}
-              disabled={!uppercase && !lowercase && !symbols}
-              onChange={(e) => setNumbers(e.target.checked)}
-            />
-            <label htmlFor="numbers">numbers</label>
-          </li>
-          <li>
-            <input
-              type="checkbox"
-              id="symbols"
-              checked={symbols}
-              disabled={!uppercase && !lowercase && !numbers}
-              onChange={(e) => setSymbols(e.target.checked)}
-            />
-            <label htmlFor="symbols">symbols</label>
-          </li>
-        </ul>
-      </div>
+        </label>
+
+        <label>
+          <input
+            type="checkbox"
+            name="uppercase"
+            checked={uppercase}
+            disabled={!lowercase && !numbers && !symbols}
+            onChange={(e) => setUppercase(e.target.checked)}
+          />
+          Uppercase
+        </label>
+
+        <label>
+          <input
+            type="checkbox"
+            name="lowercase"
+            checked={lowercase}
+            disabled={!uppercase && !numbers && !symbols}
+            onChange={(e) => setLowercase(e.target.checked)}
+          />
+          Lowercase
+        </label>
+
+        <label>
+          <input
+            type="checkbox"
+            name="numbers"
+            checked={numbers}
+            disabled={!uppercase && !lowercase && !symbols}
+            onChange={(e) => setNumbers(e.target.checked)}
+          />
+          Numbers
+        </label>
+
+        <label>
+          <input
+            type="checkbox"
+            name="symbols"
+            checked={symbols}
+            disabled={!uppercase && !lowercase && !numbers}
+            onChange={(e) => setSymbols(e.target.checked)}
+          />
+          Symbols
+        </label>
+      </section>
+      <section className="grid">
+        <button onClick={handleCopy} title="Copy">
+          Copy Password
+        </button>
+      </section>
     </div>
   );
 }
