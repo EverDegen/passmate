@@ -100,18 +100,15 @@ function App() {
           <p>Password has been copied successfully to your clipboard.</p>
         </article>
       </dialog>
-      <header>
+
+      <section>
         <h1>Random Password Generator</h1>
-      </header>
-      <section role="group">
+
         <input
           type="text"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button onClick={handleRegenerate} title="Regenerate">
-          Regenerate
-        </button>
       </section>
 
       <section>
@@ -148,7 +145,8 @@ function App() {
             onChange={(e) => setPasswordLength(Number(e.target.value))}
           />
         </label>
-
+      </section>
+      <section className="grid">
         <label>
           <input
             type="checkbox"
@@ -196,6 +194,9 @@ function App() {
       <section className="grid">
         <button onClick={handleCopy} title="Copy">
           Copy Password
+        </button>
+        <button onClick={handleRegenerate} title="Regenerate">
+          Regenerate
         </button>
       </section>
     </div>
