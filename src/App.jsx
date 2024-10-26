@@ -195,7 +195,11 @@ function App() {
         <button onClick={handleCopy} title="Copy">
           Copy Password
         </button>
-        <button onClick={handleRegenerate} title="Regenerate">
+        <button
+          className="secondary"
+          onClick={handleRegenerate}
+          title="Regenerate"
+        >
           Regenerate
         </button>
       </section>
