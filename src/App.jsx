@@ -110,25 +110,25 @@ function App() {
           onChange={(e) => setPasswordLength(Number(e.target.value))}
           onBlur={(e) => {
             const value = Number(e.target.value);
-            if (value < 4) {
-              setPasswordLength(4);
-            } else if (value > 24) {
-              setPasswordLength(24);
+            if (value < 8) {
+              setPasswordLength(8);
+            } else if (value > 50) {
+              setPasswordLength(50);
             }
           }}
         />
       </label>
 
       <label>
-        {passwordLength < 8
+        {passwordLength < 12
           ? "Weak"
-          : passwordLength >= 8 && passwordLength < 16
+          : passwordLength >= 12 && passwordLength < 24
           ? "Good"
           : "Strong"}
         <input
           type="range"
-          min={4}
-          max={24}
+          min={8}
+          max={50}
           title={passwordLength}
           value={passwordLength}
           onChange={(e) => setPasswordLength(Number(e.target.value))}
