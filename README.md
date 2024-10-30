@@ -1,1 +1,1 @@
-[Random Password Generator](https://random-password-generator-reactjs-app.netlify.app/)
+[Passmate - Random Password Generator](https://passmate.netlify.app/)

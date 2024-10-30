@@ -1,5 +1,6 @@
 {
-  "name": "random-password-generator",
+  "name": "passmate",
+  "description": "random password generator",
   "private": true,
   "version": "1.0.0",
   "type": "module",
