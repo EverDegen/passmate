@@ -210,7 +210,7 @@ export default function App() {
                   title="Adjust password length"
                 />
                 <Input
-                  className="w-11"
+                  className="w-12"
                   min={4}
                   max={50}
                   value={length}
